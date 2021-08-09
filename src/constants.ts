@@ -20,6 +20,7 @@ export const COLORS = {
   grey_text: "#737373",
   red: "#F05658",
   red_2: "#FFFAFA",
+  purple: "#681B51",
 };
 
 export const STATUS_UPLOAD_FILE_FIELD = "UPLOAD";

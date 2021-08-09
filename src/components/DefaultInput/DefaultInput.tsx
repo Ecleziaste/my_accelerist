@@ -42,7 +42,7 @@ const Input = styled.input`
   max-width: 100%;
   justify-content: flex-start;
   flex-direction: row;
-  height: 32px;
+  min-height: 46px;
   padding: 6px 12px 10px 37px;
   border-radius: 4px;
   background-color: #eff1f3;
@@ -52,6 +52,7 @@ const Input = styled.input`
   color: #667784;
   border: 1px solid transparent;
   outline: none;
+
   &:focus {
     background-color: white;
     border: 1px solid #48bbff;

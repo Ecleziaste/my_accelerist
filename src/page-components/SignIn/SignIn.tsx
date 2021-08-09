@@ -2,17 +2,14 @@ import React, { useEffect } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Form, Field, FormRenderProps } from "react-final-form";
+import styled from "styled-components";
 // import { Button, Logo } from "UI";
 import { useDispatch, useSelector } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
-// import { PasswordTextField, TextField } from "components";
 import AuthLayout from "../../layouts/AuthLayout";
 // import { actions, selectors } from "store";
 
 import { composeValidators, isRequired, isEmail } from "../../utils/validators";
-
-import formStyles from "../form.module.scss";
-import styles from "./sign-in.module.scss";
 import { ROUTE_PATH } from "../../constants";
 
 interface FormValues {
@@ -35,7 +32,9 @@ const AuthForm = ({ handleSubmit, form }: FormRenderProps<FormValues>) => {
   //     form.change("password", initialPassword);
   //   }, []);
   return (
-    <> </>
+    <>
+      <Root></Root>
+    </>
     //     <form onSubmit={handleSubmit} className={formStyles.form}>
     //       <div className={formStyles.logo}>
     //         <Logo />
@@ -83,7 +82,7 @@ const passwordFieldValidator = isRequired();
 const SignIn: NextPage = () => {
   const router = useRouter();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const onSubmit = async ({ email, password }: FormValues) => {
     // try {
     //   const { signIn } = actions.auth;
@@ -105,3 +104,9 @@ const SignIn: NextPage = () => {
 };
 
 export default SignIn;
+
+const Root = styled.div`
+  width: 100px;
+  height: 100px;
+  background: turquoise;
+`;

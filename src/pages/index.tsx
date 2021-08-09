@@ -1,16 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 
 export default function Home() {
   return (
     <Root>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="My next.js app" />
+        <title>my_accelerist</title>
+        <meta
+          name="description"
+          content="My next.js app, initial-scale=1.0, width=device-width"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      poqpoq
     </Root>
   );
 }
@@ -23,5 +26,5 @@ const Root = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: lightcoral;
+  background: #718d71;
 `;
