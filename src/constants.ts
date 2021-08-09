@@ -4,6 +4,24 @@ export const screenMd = 1020;
 export const screenLg = 1200;
 export const screenLgm = 1440;
 
+export const API_URL = "https://accelerist.herokuapp.com/api/";
+
+export const COLORS = {
+  black: "#122434",
+  blue: "#2BAEE0",
+  blue_2: "#CAF0FF",
+  blue_3: "#CEEDF9",
+  blue_4: "#D4F3FF",
+  grey: "#F8F8F8",
+  grey_2: "#F2F2F2",
+  grey_3: "#737373",
+  grey_4: "#E8E8E8",
+  grey_5: "#F4F4F4",
+  grey_text: "#737373",
+  red: "#F05658",
+  red_2: "#FFFAFA",
+};
+
 export const STATUS_UPLOAD_FILE_FIELD = "UPLOAD";
 
 export const getFileType = (url: string) => {
@@ -23,8 +41,8 @@ export const DEFAULT_AVATAR =
   "https://izumator.storage.yandexcloud.net/22/image/49fd7e30-44d3-11eb-898e-b11009511b85";
 
 export const ROUTE_PATH = {
-  signUn: "/signup",
+  signUp: "/signup",
   signIn: "/login",
-  passwordReset: "/auth/reset",
+  passwordReset: "/reset",
   search: "/search",
 };
