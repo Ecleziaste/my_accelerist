@@ -108,7 +108,7 @@ const SignIn: NextPage = () => {
 export default SignIn;
 
 const Root = styled.div`
-  width: 100%100px;
+  width: 100%;
   max-width: 454px;
   height: 100px;
   background: turquoise;

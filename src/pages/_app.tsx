@@ -10,7 +10,7 @@ import { ROUTE_PATH } from "../constants";
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      {/* <ResetStyles /> */}
+      <ResetStyles />
       <GlobalStyles />
       <Component {...pageProps} />
     </>

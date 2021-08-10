@@ -2,25 +2,19 @@ import styled from "styled-components";
 import Image from "next/image";
 import AuthHeader from "./AuthHeader";
 import { screenMd } from "../../constants";
-// import HOME_SRC from "../../../public/home.png";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
-  const imgUrl = require("../../../public/home.png").default;
-
   return (
     <Root>
       <AuthHeader />
-      <Background $imgUrl={imgUrl}>
-        {/* <BackgroundImage src="/public/home.png" layout="fill" /> */}
+      <MainContent>
+        <BackgroundImage src="/homedark3x.png" layout="fill" />
+
         <FormContainer>{children}</FormContainer>
-      </Background>
+      </MainContent>
     </Root>
   );
 };
-
-// const Content = styled.div`
-//   background-image: url(${(props) => props.img});
-// `;
 
 const Root = styled.div`
   display: flex;
@@ -31,9 +25,10 @@ const Root = styled.div`
   align-items: center;
 `;
 
-const Background = styled.div<{ $imgUrl: any }>`
+const MainContent = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -59,8 +54,8 @@ const BackgroundImage = styled(Image)`
   min-height: 100%;
   max-height: 100%;
   object-fit: cover;
-  color: aliceblue;
-  /* z-index: -1; */
+  object-position: center;
+  z-index: -1;
 `;
 
 const FormContainer = styled.div`
