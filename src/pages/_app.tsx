@@ -10,7 +10,7 @@ import { ROUTE_PATH } from "../constants";
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ResetStyles />
+      {/* <ResetStyles /> */}
       <GlobalStyles />
       <Component {...pageProps} />
     </>
@@ -18,18 +18,18 @@ function App({ Component, pageProps }: AppProps) {
 }
 
 // FIXME: getInitialProps are deprecated
-App.getInitialProps = async (appContext: AppContext) => {
-  const { Component, ctx } = appContext;
-  const appProps = await NextApp.getInitialProps(appContext);
+// App.getInitialProps = async (appContext: AppContext) => {
+//   const { Component, ctx } = appContext;
+//   const appProps = await NextApp.getInitialProps(appContext);
 
-  return {
-    ...appProps,
-    pageProps: {
-      ...(Component.getInitialProps
-        ? await Component.getInitialProps(ctx)
-        : {}),
-    },
-  };
-};
+//   return {
+//     ...appProps,
+//     pageProps: {
+//       ...(Component.getInitialProps
+//         ? await Component.getInitialProps(ctx)
+//         : {}),
+//     },
+//   };
+// };
 
 export default App;

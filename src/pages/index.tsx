@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styled from "styled-components";
 
 export default function Home() {
@@ -25,6 +24,5 @@ const Root = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background: #718d71;
 `;

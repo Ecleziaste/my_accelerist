@@ -97,16 +97,19 @@ const SignIn: NextPage = () => {
   };
 
   return (
-    <AuthLayout>
-      <Form<FormValues> onSubmit={onSubmit} component={AuthForm} />
-    </AuthLayout>
+    <>
+      <AuthLayout>
+        <Form<FormValues> onSubmit={onSubmit} component={AuthForm} />
+      </AuthLayout>
+    </>
   );
 };
 
 export default SignIn;
 
 const Root = styled.div`
-  width: 100px;
+  width: 100%100px;
+  max-width: 454px;
   height: 100px;
   background: turquoise;
 `;

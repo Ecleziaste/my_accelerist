@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-/* @font-face {
-      font-family: "Rubik";
-      src: url("../assets/fonts/Rubik/Rubik-Regular.woff");
-    } */
 
 html,
 body {
@@ -13,7 +9,6 @@ body {
   font-family: "Rubik", sans-serif;
   line-height: 18px;
   height: 100%;
-  /* font-size: 16px; */
 }
 
 #__next {
