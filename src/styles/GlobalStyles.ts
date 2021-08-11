@@ -32,14 +32,16 @@ a {
 
 button {
   outline: none;
+  cursor: pointer;
 }
 
-/* a:hover {
-  text-decoration: underline;
+input {
+  outline: none;
 }
 
-img {
+/* img {
   max-width: 100%;
   display: block;
-} */
+}  */
+
 `;

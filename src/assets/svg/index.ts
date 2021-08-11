@@ -1,0 +1,24 @@
+export { default as AcceptCircleIcon } from "./acceptCircle.svg";
+export { default as AttentionIcon } from "./attention.svg";
+export { default as CancelCircleIcon } from "./cancelCircle.svg";
+export { default as ChevronLeftIcon } from "./chevronLeft.svg";
+export { default as ChevronRightIcon } from "./chevronRight.svg";
+export { default as EditIcon } from "./edit.svg";
+export { default as EyeClosedIcon } from "./eyeClose.svg";
+export { default as EyeOpenedIcon } from "./eyeOpen.svg";
+
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";
+// export { default as chevronRightIcon } from "./chevronRight.svg";

@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import Image from "next/image";
-import AuthHeader from "./AuthHeader";
-import { screenMd } from "../../constants";
+import AuthHeader from "./components/AuthHeader";
+import { COLORS, screenMd } from "../../constants";
 
-const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const AuthLayout = ({ children }: Props) => {
   return (
     <Root>
       <AuthHeader />
       <MainContent>
-        <BackgroundImage src="/homedark3x.png" layout="fill" />
-
         <FormContainer>{children}</FormContainer>
+        <BackgroundImage src="/homedark3x.png" layout="fill" />
       </MainContent>
     </Root>
   );
@@ -65,10 +68,10 @@ const FormContainer = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 454px;
-  background: #fff;
+  background: ${COLORS.white};
   border-radius: 6px;
   padding: 40px;
-  border: 2px solid tomato;
+  z-index: 1;
 
   @media (min-width: 1023) {
     width: 66%;

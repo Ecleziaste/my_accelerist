@@ -1,3 +1,5 @@
+import { isValidLength } from "./isValidLength";
+
 export { isCorrectPassword } from "./isCorrectPassword";
 export * from "./isRequired";
 export { isEqual } from "./isEqual";
@@ -6,3 +8,4 @@ export { isEmail } from "./isEmail";
 export { isPhoneNumber } from "./isPhoneNumber";
 export { isMaskedFieldValidLength } from "./isMaskedFieldValidLength";
 export { isValidDate } from "./isValidDate";
+export { isValidLength } from "./isValidLength";

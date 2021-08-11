@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { COLORS } from "../../../constants";
+import { COLORS } from "../../../../constants";
 import Image from "next/image";
-import LOGO_ICON from "../../../assets/svg/logoAuth.svg";
+import LOGO_ICON from "../../../../assets/svg/logoAuth.svg";
 
 const AuthHeader = () => {
   return (
