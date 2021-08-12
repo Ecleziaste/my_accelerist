@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { ReactSVG } from "react-svg";
+import Image from "next/image";
+import { LinkedInIcon } from "../../../../assets/svg";
 import styled from "styled-components";
 import ButtonDefault from "../../../../UI/ButtonDefault";
 import { Form, Field, FormRenderProps } from "react-final-form";
@@ -104,7 +105,9 @@ const AuthForm = () => {
 
             <Text>or continue with</Text>
 
-            <LinkWrap>{/* <ReactSVG /> */}</LinkWrap>
+            <LinkWrap>
+              <Image src={LinkedInIcon} alt="LinkedIn icon" />
+            </LinkWrap>
             {/* <Link href="#"></Link> */}
           </FormInner>
         )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ReactSVG } from "react-svg";
+import Image from "next/image";
 import { FieldRenderProps } from "react-final-form";
 import { COLORS } from "../../constants";
 import { EyeClosedIcon, EyeOpenedIcon } from "../../assets/svg";
@@ -48,7 +48,10 @@ const DefaultInput: React.FC<FieldRenderProps<string, HTMLElement> & Props> = ({
             onClick={() => setIsPasswordVisible((prevValue) => !prevValue)}
             type="button"
           >
-            <ReactSVG src={isPasswordVisible ? EyeOpenedIcon : EyeClosedIcon} />
+            <Image
+              src={isPasswordVisible ? EyeOpenedIcon : EyeClosedIcon}
+              alt="eye icon"
+            />
           </Button>
         )}
       </InputWrapper>
