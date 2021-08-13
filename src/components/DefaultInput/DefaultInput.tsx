@@ -1,7 +1,6 @@
 import { FieldRenderProps } from "react-final-form";
 import { IDefaultInputProps } from "../../types";
 import { COLORS } from "../../constants";
-import { v4 } from "uuid";
 
 import styled from "styled-components";
 
@@ -15,11 +14,9 @@ const DefaultInput: React.FC<
   label,
   disabled,
   renderHidePass,
+  id,
   ...props
 }) => {
-  const id = v4();
-  console.log(id);
-
   return (
     <Root>
       {label && <Label htmlFor={id}>{label}</Label>}

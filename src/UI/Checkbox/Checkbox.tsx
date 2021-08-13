@@ -3,15 +3,13 @@ import { FieldRenderProps } from "react-final-form";
 import { IDefaultInputProps } from "../../types";
 import styled from "styled-components";
 import { COLORS } from "../../constants";
-import { v4 } from "uuid";
 import { CHECK_ICON } from "../../assets/svg";
 import Image from "next/image";
 
 const Checkbox: React.FC<
   FieldRenderProps<string, HTMLElement> & IDefaultInputProps
-> = ({ label, ...props }) => {
+> = ({ label, id, ...props }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const id = v4();
 
   return (
     <Root>
@@ -76,7 +74,8 @@ const StyledCheckbox = styled.div<{ $checked: boolean }>`
   height: 20px;
   margin: 0;
   border-radius: 3px;
-  border: 1px solid ${COLORS.grey_6};
+  border: 1px solid
+    ${(props) => (props.$checked ? COLORS.blue_2 : COLORS.grey_6)};
   background: ${(props) => (props.$checked ? COLORS.blue_2 : COLORS.white)};
 
   ${Icon} {
