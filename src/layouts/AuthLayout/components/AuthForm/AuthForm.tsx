@@ -8,7 +8,7 @@ import { COLORS, ROUTE_PATH } from "../../../../constants";
 import DefaultInput from "../../../../components/DefaultInput";
 import PasswordInput from "../../../../components/PasswordInput";
 import Checkbox from "../../../../UI/Checkbox";
-import { Form, Field, FormRenderProps } from "react-final-form";
+import { Form, Field, useFormState } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 //TODO: appDispatch
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -74,7 +74,7 @@ const AuthForm: React.FC<Props> = ({ signup, login }) => {
           password: "",
         }}
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, ...formProps }) => (
           <FormInner onSubmit={handleSubmit}>
             <TabsWrap>
               <Link href="/signup" passHref>
@@ -91,6 +91,7 @@ const AuthForm: React.FC<Props> = ({ signup, login }) => {
                 name="email"
                 type="email"
                 label="Email"
+                id="email"
                 component={DefaultInput}
                 placeholder="Enter email"
               />
@@ -102,6 +103,7 @@ const AuthForm: React.FC<Props> = ({ signup, login }) => {
                 name="password"
                 type="password"
                 label="Password"
+                id="password"
                 component={PasswordInput}
                 placeholder="Enter password"
               />
@@ -124,6 +126,7 @@ const AuthForm: React.FC<Props> = ({ signup, login }) => {
 
             <ButtonDefault
               type="submit"
+              disabled={!formProps.valid}
               text={login ? "Login" : "Registration"}
             />
 

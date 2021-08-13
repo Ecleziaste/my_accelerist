@@ -15,7 +15,7 @@ const ButtonDefault: React.FC<IBasePropsButton> = ({
   onClick,
   type = "button",
   width,
-  disabled = true,
+  disabled = false,
   isLoading,
 }) => {
   return (
