@@ -1,22 +1,12 @@
-import React, { useState } from "react";
-import Image from "next/image";
 import { FieldRenderProps } from "react-final-form";
+import { IDefaultInputProps } from "../../types";
 import { COLORS } from "../../constants";
-import { EyeClosedIcon, EyeOpenedIcon } from "../../assets/svg";
 
 import styled from "styled-components";
 
-type Props = {
-  placeholder: string;
-  input: any;
-  value: string;
-  label?: string;
-  disabled?: boolean;
-  id?: string;
-  renderHidePass?: boolean;
-};
-
-const DefaultInput: React.FC<FieldRenderProps<string, HTMLElement> & Props> = ({
+const DefaultInput: React.FC<
+  FieldRenderProps<string, HTMLElement> & IDefaultInputProps
+> = ({
   placeholder,
   input,
   meta,
@@ -24,36 +14,25 @@ const DefaultInput: React.FC<FieldRenderProps<string, HTMLElement> & Props> = ({
   label,
   disabled,
   id,
-  renderHidePass = false,
+  renderHidePass,
+  ...props
 }) => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
   return (
     <Root>
       {label && <Label htmlFor={id}>{label}</Label>}
 
       <InputWrapper>
         <Input
+          $isError={meta.error && meta.touched}
           {...input}
-          inputType={isPasswordVisible ? "text" : "password"}
-          autoComplete="off"
+          {...props}
+          autocomplete="off"
           disabled={disabled}
           id={id}
           value={value || undefined}
           placeholder={placeholder}
-          secureTextEntry={isPasswordVisible}
         />
-        {renderHidePass && (
-          <Button
-            onClick={() => setIsPasswordVisible((prevValue) => !prevValue)}
-            type="button"
-          >
-            <Image
-              src={isPasswordVisible ? EyeOpenedIcon : EyeClosedIcon}
-              alt="eye icon"
-            />
-          </Button>
-        )}
+        {renderHidePass?.()}
       </InputWrapper>
 
       {(meta.error || meta.submitError) && meta.touched && (
@@ -66,35 +45,35 @@ const DefaultInput: React.FC<FieldRenderProps<string, HTMLElement> & Props> = ({
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  margin-bottom: 24px;
 `;
 
 const Label = styled.label`
   display: block;
   margin-bottom: 4px;
   font-size: 12px;
-  color: ${COLORS.grey_text};
+  color: ${COLORS.grey_3};
 `;
 
 const InputWrapper = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 `;
 
-const Input = styled.input`
+const Input = styled.input<{ $isError: any }>`
   display: flex;
+  flex: 1;
   max-width: 100%;
-  justify-content: flex-start;
-  flex-direction: row;
   min-height: 46px;
-  padding: 10px 16px;
+  background: ${(props) => (props.$isError ? COLORS.red_2 : COLORS.white)};
+  border: 1px solid ${(props) => (props.$isError ? COLORS.red : COLORS.grey_4)};
   border-radius: 8px;
-  background-color: ${COLORS.white};
+  padding: 10px 16px;
   font-size: 16px;
   line-height: 1.13;
   font-weight: 400;
   color: ${COLORS.black};
-  border: 1px solid ${COLORS.grey_4};
   caret-color: ${COLORS.blue};
 
   &:focus {
@@ -110,27 +89,7 @@ const Input = styled.input`
       color: ${COLORS.grey_6};
     }
   }
-
-  &:invalid {
-    border-color: ${COLORS.red};
-    background-color: ${COLORS.red_2};
-  }
 `;
-
-const Button = styled.button`
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin: 8px 12px;
-  background-color: transparent;
-`;
-
-// const SVG = styled(ReactSVG)`
-//   width: 24px;
-//   height: 24px;
-// `;
 
 const ValidationText = styled.div`
   display: flex;

@@ -33,6 +33,7 @@ a {
 button {
   outline: none;
   cursor: pointer;
+  background: transparent;
 }
 
 input {

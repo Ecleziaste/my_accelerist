@@ -2,12 +2,12 @@ import { NextPage } from "next";
 import AuthLayout from "../../layouts/AuthLayout";
 import AuthForm from "../../layouts/AuthLayout/components/AuthForm";
 
-const SignIn: NextPage = () => {
+const SignUp: NextPage = () => {
   return (
     <AuthLayout>
-      <AuthForm />
+      <AuthForm signup={true} login={false} />
     </AuthLayout>
   );
 };
 
-export default SignIn;
+export default SignUp;

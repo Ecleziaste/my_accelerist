@@ -13,7 +13,7 @@ const AuthLayout = ({ children }: Props) => {
       <AuthHeader />
       <MainContent>
         <FormContainer>{children}</FormContainer>
-        <BackgroundImage src="/homedark3x.png" layout="fill" />
+        <BackgroundImage src="/homedark2x.png" layout="fill" />
       </MainContent>
     </Root>
   );

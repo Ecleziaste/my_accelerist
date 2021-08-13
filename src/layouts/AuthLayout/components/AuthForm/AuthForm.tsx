@@ -1,9 +1,13 @@
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Image from "next/image";
-import { LinkedInIcon } from "../../../../assets/svg";
+import Link from "next/link";
+import { LINKEDIN_ICON } from "../../../../assets/svg";
 import styled from "styled-components";
 import ButtonDefault from "../../../../UI/ButtonDefault";
+import { COLORS, ROUTE_PATH } from "../../../../constants";
+import DefaultInput from "../../../../components/DefaultInput";
+import PasswordInput from "../../../../components/PasswordInput";
+import Checkbox from "../../../../UI/Checkbox";
 import { Form, Field, FormRenderProps } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 //TODO: appDispatch
@@ -14,16 +18,17 @@ import {
   isRequired,
   isEmail,
 } from "../../../../utils/validators";
-import { COLORS, ROUTE_PATH } from "../../../../constants";
-import DefaultInput from "../../../../components/DefaultInput";
-// import { actions, selectors } from "store";
 
 interface FormValues {
   email: string;
   password: string;
 }
+type Props = {
+  signup: boolean;
+  login: boolean;
+};
 
-const AuthForm = () => {
+const AuthForm: React.FC<Props> = ({ signup, login }) => {
   const emailFieldValidator = composeValidators(isRequired(), isEmail());
   const passwordFieldValidator = composeValidators(isRequired(), isValidLength);
   //   const router = useRouter();
@@ -71,44 +76,62 @@ const AuthForm = () => {
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <FormInner onSubmit={handleSubmit}>
-            <Field
-              validate={emailFieldValidator}
-              name="email"
-              type="email"
-              label="Email"
-              component={DefaultInput}
-              placeholder="Enter email"
-            />
+            <TabsWrap>
+              <Link href="/signup" passHref>
+                <A $active={signup}>Register</A>
+              </Link>
+              <Link href="/login" passHref>
+                <A $active={login}>Login</A>
+              </Link>
+            </TabsWrap>
 
-            <Field
-              validate={passwordFieldValidator}
-              name="password"
-              type="password"
-              label="Password"
-              component={DefaultInput}
-              placeholder="Enter password"
-              renderHidePass={true}
-            />
+            <FieldWrap>
+              <Field
+                validate={emailFieldValidator}
+                name="email"
+                type="email"
+                label="Email"
+                component={DefaultInput}
+                placeholder="Enter email"
+              />
+            </FieldWrap>
 
-            <Agreement>
-              I agree that by clicking <Span>“Registration”</Span> I accept
-              the&nbsp;
-              <Span>Terms Of Service</Span> and <Span>Privacy Policy</Span>
-            </Agreement>
+            <FieldWrap>
+              <Field
+                validate={passwordFieldValidator}
+                name="password"
+                type="password"
+                label="Password"
+                component={PasswordInput}
+                placeholder="Enter password"
+              />
+            </FieldWrap>
+
+            {login ? (
+              <BottomRow>
+                <Field name="remember" label="Remember" component={Checkbox} />
+                <Link href="/reset" passHref>
+                  <ResetLink>Forgot password?</ResetLink>
+                </Link>
+              </BottomRow>
+            ) : (
+              <Agreement>
+                I agree that by clicking <Span>“Registration”</Span> I accept
+                the&nbsp;
+                <Span>Terms Of Service</Span> and <Span>Privacy Policy</Span>
+              </Agreement>
+            )}
 
             <ButtonDefault
-              //   onClick={() => onSubmit}
-              // FIXME: use handleSubmit ?
               type="submit"
-              text="Registration"
+              text={login ? "Login" : "Registration"}
             />
 
             <Text>or continue with</Text>
 
             <LinkWrap>
-              <Image src={LinkedInIcon} alt="LinkedIn icon" />
+              <Image src={LINKEDIN_ICON} alt="LinkedIn icon" />
             </LinkWrap>
-            {/* <Link href="#"></Link> */}
           </FormInner>
         )}
       />
@@ -152,11 +175,51 @@ const FormInner = styled.form`
   max-height: 100%;
 `;
 
+const TabsWrap = styled.div`
+  display: flex;
+  text-align: center;
+  background: ${COLORS.grey_2};
+  border-radius: 6px;
+  padding: 3px;
+  margin-bottom: 20px;
+`;
+
+const FieldWrap = styled.div`
+  margin-bottom: 24px;
+`;
+
+const A = styled.a<{ $active: boolean }>`
+  background-color: ${(props) =>
+    props.$active ? COLORS.blue_2 : COLORS.grey_2};
+  border-radius: 6px;
+  text-align: center;
+  flex: 1 1 0%;
+  font-size: 12px;
+  padding: 9px 0px;
+`;
+
 const Agreement = styled.div`
   font-size: 12px;
   text-align: center;
-  color: ${COLORS.grey_text};
+  color: ${COLORS.grey_3};
   margin: 16px 0 16px;
+  padding: 0 10px;
+
+  &:nth-child(1) {
+    font-weight: 900;
+  }
+`;
+
+const BottomRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+`;
+
+const ResetLink = styled.a`
+  font-size: 12px;
+  color: ${COLORS.grey_3};
 `;
 
 const Span = styled.span`
@@ -165,15 +228,20 @@ const Span = styled.span`
 `;
 
 const Text = styled.div`
-  margin: 32px 0 34px;
+  margin: 32px 0 24px;
   font-size: 12px;
-  color: ${COLORS.grey_text};
+  color: ${COLORS.grey_3};
   align-self: center;
 `;
 
-const LinkWrap = styled.div`
-  width: 24px;
-  height: 24px;
+const LinkWrap = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: ${COLORS.grey};
   align-self: center;
 `;
 

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { COLORS } from "../../../../constants";
 import Image from "next/image";
-import LOGO_ICON from "../../../../assets/svg/logoAuth.svg";
+import { LOGO_AUTH_ICON } from "../../../../assets/svg";
 
 const AuthHeader = () => {
   return (
     <Root>
-      <Image src={LOGO_ICON} alt="accelerist logo" />
+      <Image src={LOGO_AUTH_ICON} alt="accelerist logo" />
       <Text>accelerist</Text>
     </Root>
   );
@@ -37,5 +37,5 @@ const Text = styled.div`
   line-height: 26px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: #fff;
+  color: ${COLORS.white};
 `;
