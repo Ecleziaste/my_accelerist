@@ -1,10 +1,11 @@
 import NextApp, { AppProps, AppContext } from "next/app";
 import { ResetStyles } from "../styles/ResetStyles";
 import { GlobalStyles } from "../styles/GlobalStyles";
+import { wrapper } from "../store";
+import * as api from "../api";
+
 import "../styles/fonts.css";
 
-// import * as api from "api";
-// import { actions, wrapper } from "store";
 import { ROUTE_PATH } from "../constants";
 
 function App({ Component, pageProps }: AppProps) {
@@ -32,4 +33,4 @@ function App({ Component, pageProps }: AppProps) {
 //   };
 // };
 
-export default App;
+export default wrapper.withRedux(App);

@@ -4,7 +4,7 @@ export const screenMd = 1020;
 export const screenLg = 1200;
 export const screenLgm = 1440;
 
-export const API_URL = "https://accelerist.herokuapp.com/api/";
+export const API_URL = "https://accelerist.herokuapp.com/api/v1/";
 
 export const COLORS = {
   black: "#122434",

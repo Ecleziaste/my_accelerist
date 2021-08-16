@@ -1,5 +1,5 @@
 import { API_URL } from "../constants";
-import Axios, { AxiosInstance } from "axios";
+import Axios, { AxiosInstance, AxiosError, AxiosRequestConfig } from "axios";
 
 export class Http {
   constructor(private readonly _axios: AxiosInstance) {}
@@ -38,3 +38,9 @@ export const http = new Http(
     timeout: 60000,
   })
 );
+
+export type RequestError<
+  T = { message: string; statusCode: number; error: string }
+> = AxiosError<T>;
+
+export type RequestConfig = AxiosRequestConfig;

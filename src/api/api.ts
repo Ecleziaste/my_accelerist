@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-// import httpClient, { RequestConfig } from "./http-client";
+import { http } from "../services/http";
+import { IUserResponse } from "../types";
 
 type Data = {
   name: string;

@@ -18,6 +18,8 @@ import {
   isRequired,
   isEmail,
 } from "../../../../utils/validators";
+import { signIn } from "../../../../store/auth/actions";
+import { actions } from "../../../../store/app/slice";
 
 interface FormValues {
   email: string;
@@ -29,6 +31,7 @@ type Props = {
 };
 
 const AuthForm: React.FC<Props> = ({ signup, login }) => {
+  const dispatch = useDispatch();
   const emailFieldValidator = composeValidators(isRequired(), isEmail());
   const passwordFieldValidator = composeValidators(isRequired(), isValidLength);
   //   const router = useRouter();
@@ -47,23 +50,18 @@ const AuthForm: React.FC<Props> = ({ signup, login }) => {
 
   const router = useRouter();
 
-  // const dispatch = useDispatch();
-  const handleSubmit = ({ email, password }: FormValues) => {
-    console.log(email, password);
-  };
   const onSubmit = async ({ email, password }: FormValues) => {
-    console.log(email, password);
-
-    // try {
-    //   const { signIn } = actions.auth;
-    //   const actionResult = await dispatch(signIn({ email, password }));
-    //   // @ts-ignore
-    //   unwrapResult(actionResult);
-    //   router.push("/");
-    // } catch (error) {
-    //   const { showNotification } = actions.app;
-    //   dispatch(showNotification({ message: error.message, type: "error" }));
-    // }
+    try {
+      const actionResult = await dispatch(signIn({ email, password }));
+      // @ts-ignore
+      unwrapResult(actionResult);
+      router.push("/");
+      console.log(actionResult);
+    } catch (error) {
+      const showNotification = actions.showNotification;
+      dispatch(showNotification({ message: error.message, type: "error" }));
+      console.log(error.message);
+    }
   };
   return (
     <Root>
