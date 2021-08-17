@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signIn, signUp, signOut, resetPassword } from "./actions";
+import { signIn, signUp, signOut, passwordReset } from "./actions";
 import { LoadingStatus } from "../../types";
 
 const authSlice = createSlice({
@@ -27,15 +27,15 @@ const authSlice = createSlice({
       state.signInLoadingStatus = "rejected";
     });
 
-    builder.addCase(resetPassword.pending, (state) => {
+    builder.addCase(passwordReset.pending, (state) => {
       state.resetPasswordLoadingStatus = "pending";
     });
-    builder.addCase(resetPassword.fulfilled, (state, action) => {
+    builder.addCase(passwordReset.fulfilled, (state, action) => {
       const { accessToken } = action.payload;
       state.accessToken = accessToken;
       state.resetPasswordLoadingStatus = "fulfilled";
     });
-    builder.addCase(resetPassword.rejected, (state) => {
+    builder.addCase(passwordReset.rejected, (state) => {
       state.resetPasswordLoadingStatus = "rejected";
     });
 

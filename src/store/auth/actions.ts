@@ -37,7 +37,7 @@ export const signIn = createAsyncThunk<any, SignInParams>(
   }
 );
 
-export const resetPassword = createAsyncThunk<any, string>(
+export const passwordReset = createAsyncThunk<any, string>(
   "auth/resetPassword",
   async (params, { rejectWithValue }) => {
     try {

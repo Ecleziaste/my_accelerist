@@ -56,7 +56,6 @@ const AuthForm: React.FC<Props> = ({ signup, login }) => {
       // @ts-ignore
       unwrapResult(actionResult);
       router.push("/");
-      console.log(actionResult);
     } catch (error) {
       const showNotification = actions.showNotification;
       dispatch(showNotification({ message: error.message, type: "error" }));
